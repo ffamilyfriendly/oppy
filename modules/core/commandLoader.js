@@ -1,4 +1,4 @@
-const { getFileList } = require('../../library/getFileList')
+const getFileList = require('../../library/getFileList')
 
 const commands = {
     aliases: new Map(),

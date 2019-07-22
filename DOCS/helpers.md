@@ -16,3 +16,15 @@ You can access them from `bot.helpers`
 - `ensureUser(id)` / `ensureGuild(id)`
     - Makes sure the database entry for this user has all the required properties specified in `config.js`
     - More info on this in [Database](database.md)
+
+## Example usage
+```js
+const { bot } = require('../bot')
+
+const foo = async () => {
+    console.log('hi')
+    await bot.helpers.sleep(2 * 1000) // Will wait for 2 seconds
+    console.log('hello')
+}
+foo()
+```

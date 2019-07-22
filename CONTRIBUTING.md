@@ -1,7 +1,7 @@
 # Contributing
 Feel free to make a PR or create an issue.
 
-## Code style and rules
+## Code style/rules
 - No semicolons anywhere
 - 4 spaces for indentation
 - Don't add useless features

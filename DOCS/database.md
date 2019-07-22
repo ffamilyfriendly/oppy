@@ -16,15 +16,16 @@ console.log(value.hi) // 'hello'
 The database won't disappear after restarting the bot, unless you remove the name property from the constructor.
 
 # Defaults
-Before writing anything to your bot or guild objects, you should ensure that all the required values exist in them.
+Before reading/writing anything to the database, you should ensure that all the required values exist in them.
 ```js
 const { bot, db } = require('../bot)
 
 bot.helpers.ensure.user(id)
 // Will set the user's value to the default specified in config.js
 // This will not delete existing values
-// Example: { balance: 0 }
+
 // Also works with guilds
+bot.gelpers.ensure.guild(id)
 
 // And only then
 db.user.set(id, 420, 'balance')

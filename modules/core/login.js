@@ -7,12 +7,12 @@ exports.run = () => {
 
     bot.on('ready', () => {
         console.log(
-            '########################################################\n' +
+            '##################################################\n' +
             `# ${config.name} was started\n` + 
             `# In ${bot.guilds.size} guilds with ${bot.users.size} users\n` +
             `# The owners are: ${config.owners.map(id => bot.users.get(id).tag).join(', ')}\n` +
             `# The default prefix is ${config.defaultPrefix}\n` +
-            '########################################################\n'
+            '##################################################\n'
         )
 
         const activity = () => config.activity.text

@@ -20,7 +20,7 @@ const modules = new Discord.Collection()
 module.exports = { bot, db, modules }
 
 // Module loader
-const { getFileList } = require('./library/getFileList')
+const getFileList = require('./library/getFileList')
 getFileList('./modules').forEach(moduleName => {
     const module = require(moduleName)
     modules.set(module.meta.name, module)
