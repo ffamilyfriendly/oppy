@@ -34,9 +34,8 @@ exports.run = () => {
                             .then(m2 => m2.delete(20 * 1000)) // Delete the message in 20 s
                         return
                     }
-                }
                 // If the member doesn't have permissions
-                if (!m.member.hasPermission(command.meta.permissions)) {
+                } else if (!m.member.hasPermission(command.meta.permissions)) {
                     embed.setDescription(`You need ${command.meta.permissions.map(perm => `\`${perm}\``).join(', ')} to run this command.`)
                     // Send the embed
                     m.channel.send({embed})
