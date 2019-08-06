@@ -1,14 +1,12 @@
-const { bot, modules, db } = require('../../bot')
-const config = require('../../config')
+const { bot, modules, db, functions, config } = require('../../bot')
 
 exports.run = (m, a) => {
     const inspect = require('util').inspect
 
-    // Ignore if there is nothing to run
     if (a.length < 1) return
     try {
-        // Run the code and send the output
-        m.channel.send(`\`\`\`js\n${inspect(eval(a.join(' ')))}\n\`\`\``)
+        const output = inspect(eval(a.join(' '))).replace(/`/g, '\`').slice(0, 1980)
+        m.channel.send(`\`\`\`js\n${output}\n\`\`\``)
     }
     catch (e) {
         m.channel.send(`\`ERROR\`\n\`\`\`js\n${e}\n\`\`\``)

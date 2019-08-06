@@ -6,6 +6,6 @@ Feel free to make a PR or create an issue.
 - 4 spaces for indentation
 - Don't add useless features
 - Never use var
-- ES6. Use it.
+- Use a mix of ES6 and also not ES6
 
 thank

@@ -16,8 +16,11 @@ const bot = new Discord.Client()
 // Modules
 const modules = new Discord.Collection()
 
+// Config
+const config = require('./config')
+
 // Exports
-module.exports = { bot, db, modules }
+module.exports = { bot, db, modules, config }
 
 // Module loader
 const getFileList = require('./library/getFileList')

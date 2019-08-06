@@ -1,11 +1,8 @@
-const { bot, modules, db } = require('../../bot')
-const config = require('../../config')
+const { bot, modules, db, functions, config } = require('../../bot')
 
 exports.run = (m, a) => {
-    // Ignore if there is nothing to run
     if (a.length < 1) return
     try {
-        // Run the code
         eval(a.join(' '))
     }
     catch (e) {

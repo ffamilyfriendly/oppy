@@ -1,8 +1,7 @@
-const { bot } = require('../../bot')
-const config = require('../../config')
+const { bot, config } = require('../../bot')
 
 exports.run = () => {
-    console.log('Modules and commands have been loaded\nLogging in\n')
+    console.log('Logging in\n')
     bot.login(config.tokens.discord)
 
     bot.on('ready', () => {
@@ -25,9 +24,11 @@ exports.run = () => {
             bot.user.setActivity(activity(), config.activity)
         }, 60 * 1000)
     })
+
+    bot.on('error', () => {})
 }
 
 exports.meta = {
     name: 'login',
-    autorun: 2
+    autorun: 3
 }

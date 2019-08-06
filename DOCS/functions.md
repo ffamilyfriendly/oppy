@@ -1,8 +1,8 @@
-# Helpers 
-Helpers are functions that do very useful things. They are meant to save time and make code
+# Functions 
+The bot has some functions that do very useful things. They are meant to save time and make code
 more readable.
 
-You can access them from `bot.helpers`
+You can access them from `const { functions } = require('./bot')`
 
 - `embed([color])`
     - Returns a RichEmbed with the default color so you wouldn't have to require discord and the config
@@ -19,11 +19,11 @@ You can access them from `bot.helpers`
 
 ## Example usage
 ```js
-const { bot } = require('../bot')
+const { functions } = require('../bot')
 
 const foo = async () => {
     console.log('hi')
-    await bot.helpers.sleep(2 * 1000) // Will wait for 2 seconds
+    await functions.sleep(2 * 1000) // Will wait for 2 seconds
     console.log('hello')
 }
 foo()

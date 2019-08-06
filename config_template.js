@@ -7,7 +7,7 @@ module.exports = {
         ''
     ],
     shards: 'auto', // 'auto' or number, up to 2500 guilds per shard
-    name: 'TestBot',
+    name: 'Test-bot',
     embedColor: '#ffffff', // Default color for embeds
     activity: {
         text: 'BOTservers servers | BOTprefixhelp',
@@ -25,8 +25,10 @@ module.exports = {
         enabled: false, // Creates a mess in the console
         ignoreBotOwners: true
     },
-    dbDefaults: { // Default objects in the database
-        user: {},
+    dbDefaults: {
+        user: {
+            blacklist: false
+        },
         guild: {
             prefix: undefined
         }

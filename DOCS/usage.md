@@ -1,5 +1,5 @@
 # Usage
-This guide explains how to download, configure and use the bot step by step.
+This guide explains how to download, configure and use the bot step by step
 
 - Install `git`
     - [Download git](https://git-scm.com/downloads)
@@ -27,8 +27,10 @@ This guide explains how to download, configure and use the bot step by step.
     - This may take some time to install
     - If you get errors, read them and resolve them
         - You may need to install build tools:
-            - Windows: `yarn global add windows-build-tools`
+            - Windows: `npm install --global windows-build-tools`
                 - This may take a while to install
+                - Due to some bugs, this doesn't work with yarn, so use npm
+                - You may need to run this as admin
             - Linux: `sudo apt-get install build-essential` (the exact command depends on your distribution)
 - Edit `config_template.js` using a text editor (like notepad or nano or something)
     - Set the discord token. You can get the token from the 
@@ -37,7 +39,7 @@ This guide explains how to download, configure and use the bot step by step.
             - Create an application
             - Add a bot account to it
             - [Generate a bot invite](https://discordapi.com/permissions.html) and invite it to your server
-        - Do not share the token with anyone. It's like your bot's password.
+        - Do not share the token with anyone. It's like your bot's password
             - Don't publish it on git either obviously
     - Set the default prefix. Example: `!`
         - The bot will respond to commands that start with the prefix you set
@@ -45,7 +47,7 @@ This guide explains how to download, configure and use the bot step by step.
         - Enable `Developer Mode` in your discord settings under `Appearance`
         - Right click your profile picture in a chat
         - Click `Copy ID`
-    - You should keep `shards` on `auto`, unless you know what you're doing.
+    - You should keep `shards` on `auto`, unless you know what you're doing
         - You'll need sharding once your bot reaches 2500 guilds
     - Set the bot name
     - Set the default embed color. Example: `#ffffff`
@@ -60,17 +62,17 @@ This guide explains how to download, configure and use the bot step by step.
 - Start the bot
     - `node bot` or `yarn start`
     - If you get an error, read what it says on the first or second line. Don't give up just yet!
-        - Ask someone about it if you can't figure it out yourself or use google.
+        - Ask someone about it if you can't figure it out yourself or use google
         - Make sure you ran `yarn install`
     - If you want the bot to restart itself when it crashes, use `pm2`
         - `yarn global add pm2`
         - `pm2 start bot.js`
         - `pm2 logs bot`
-- Check if the bot is working by using the `!ping` command (the prefix depends on what you set in the config) in a server
+- Check if the bot is working by using the `d.ping` command (the prefix depends on what you set in the config) in a server
     - If the bot responds, it's working
 
 # Done!
-At this point, your bot should be working. To run it 24/7 you'll probably need a VPS, unless you want to keep your computer running all day and night.
+At this point, your bot should be working. To run it 24/7 you'll probably need a VPS, unless you want to keep your computer running all day and night
 
 # What's next?
 Check out [Adding commands](addingCommands.md) and [Adding modules](addingModules.md)

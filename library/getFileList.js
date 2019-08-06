@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const getFileList = dir => {
+module.exports = dir => {
     let res = []
 
     fs.readdirSync(dir).forEach(file => {
@@ -8,11 +8,9 @@ const getFileList = dir => {
         const stat = fs.statSync(fileDir)
 
         if (stat && stat.isDirectory())
-            res = res.concat(getFileList(fileDir))
+            res = res.concat(module.exports(fileDir))
         else res.push(fileDir)
     })
 
     return res
 }
-
-module.exports = getFileList

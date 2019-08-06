@@ -45,12 +45,13 @@ exports.run = () => {
         help.get(command.meta.help.category).push({
             names: command.meta.names,
             description: command.meta.help.description,
-            usage: command.meta.help.usage
+            usage: command.meta.help.usage,
+            permissions: command.meta.permissions
         })
     })
 }
 
 exports.meta = {
     name: 'commandLoader',
-    autorun: 3
+    autorun: 1
 }

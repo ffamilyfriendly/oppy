@@ -1,12 +1,8 @@
-const { bot } = require('../../bot')
+const { bot, functions } = require('../../bot')
 
 exports.run = (m, a) => {
-    // Create an embed
-    const embed = bot.helpers.embed()
-        .setDescription(`Pong! ${Math.floor(bot.ping)} ms :ping_pong:`)
-
-    // Send the embed
-    m.channel.send({embed})
+    // Send an embed with the ping rounded down
+    functions.respond(m, `Pong! ${Math.floor(bot.ping)} ms :ping_pong:`)
 }
 
 exports.meta = {
@@ -15,6 +11,6 @@ exports.meta = {
     help: {
         description: 'See the bot\'s ping',
         usage: '',
-        category: 'examples'
+        category: 'misc'
     }
 }
