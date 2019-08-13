@@ -12,8 +12,7 @@ exports.run = async (m, a) => {
             })
         })
         
-    }
-    catch (e) {
+    } catch (e) {
         m.channel.send(`\`ERROR\`\n\`\`\`js\n${e}\n\`\`\``)
     }
 }

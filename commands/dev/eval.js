@@ -7,8 +7,7 @@ exports.run = (m, a) => {
     try {
         const output = inspect(eval(a.join(' '))).replace(/`/g, '\`').slice(0, 1980)
         m.channel.send(`\`\`\`js\n${output}\n\`\`\``)
-    }
-    catch (e) {
+    } catch (e) {
         m.channel.send(`\`ERROR\`\n\`\`\`js\n${e}\n\`\`\``)
     }
 }

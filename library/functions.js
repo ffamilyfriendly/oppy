@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const Bot = require('../../bot')
+const Bot = require('../bot')
 const { bot, db, config } = Bot
 
 Bot.functions = {
@@ -33,11 +33,4 @@ Bot.functions = {
         m.channel.send({embed})
             .catch(() => {})
     }
-}
-
-exports.run = () => {}
-
-exports.meta = {
-    name: 'helpers',
-    autorun: 0
 }

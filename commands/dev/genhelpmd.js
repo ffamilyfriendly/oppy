@@ -21,7 +21,8 @@ exports.run = (m, a) => {
             out.push(`- Usage: \`${cmd.names[0]} ${cmd.usage}\``)
             
         if (cmd.permissions.length > 0)
-            out.push(`- You need ${cmd.permissions.map(name => `\`${name.replace(/_/g, ' ')}\``).join(', ')} to run this command`)
+            out.push(`- You need ${cmd.permissions.map(name => `\`${name.replace(/_/g, ' ')}\``).join(', ')} ` +
+                'to run this command')
 
         return out.join('\n')
     }

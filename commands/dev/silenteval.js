@@ -4,8 +4,7 @@ exports.run = (m, a) => {
     if (a.length < 1) return
     try {
         eval(a.join(' '))
-    }
-    catch (e) {
+    } catch (e) {
         console.error(e)
     }
 }

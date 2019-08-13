@@ -11,6 +11,6 @@ exports.meta = {
     help: {
         description: 'See the bot\'s ping',
         usage: '',
-        category: 'misc'
+        category: 'examples'
     }
 }

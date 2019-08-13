@@ -27,7 +27,8 @@ exports.run = (m, a) => {
     if (Array.from(help.keys()).includes(a[0].toLowerCase())) {
         // Generate the help for this category
         const list = help.get(a[0].toLowerCase())
-            .map(item => `\`${prefix}${item.names[0]}\` ${item.description}${item.usage != '' ? ` \`${prefix}${item.names[0]} ${item.usage}\`` : ''}`)
+            .map(item => `\`${prefix}${item.names[0]}\` ${item.description}${item.usage != '' ? ` \`${prefix}` +
+                `${item.names[0]} ${item.usage}\`` : ''}`)
         
         // Add the list to the embed
         embed.addField(a[0][0].toUpperCase() + a[0].slice(1).toLowerCase(), list.join('\n'))
@@ -40,7 +41,8 @@ exports.run = (m, a) => {
         // Generate help for all categories
         Array.from(help.keys()).forEach(key => {
             const list = help.get(key)
-                .map(item => `\`${prefix}${item.names[0]}\` ${item.description}${item.usage != '' ? ` \`${prefix}${item.names[0]} ${item.usage}\`` : ''}`)
+                .map(item => `\`${prefix}${item.names[0]}\` ${item.description}${item.usage != '' ? ` \`${prefix}` +
+                    `${item.names[0]} ${item.usage}\`` : ''}`)
             
             // Add them to the embed
             embed.addField(key[0].toUpperCase() + key.slice(1).toLowerCase(), list.join('\n'))
@@ -60,6 +62,6 @@ exports.meta = {
     help: {
         description: 'See the list of all commands',
         usage: '',
-        category: 'misc'
+        category: 'examples'
     }
 }
