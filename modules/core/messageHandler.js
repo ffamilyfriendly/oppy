@@ -8,7 +8,7 @@ exports.run = () => {
         const prefix = functions.getPrefix(m.guild.id)
 
         if (m.content.startsWith(prefix)) {
-            functions.ensure.user(m.author.id)
+            db.ensure.user(m.author.id)
             if (db.user.get(m.author.id, 'blacklist')) return
 
             const args = m.content.split(/\s+/g)
@@ -19,22 +19,19 @@ exports.run = () => {
                 m.delete().catch(() => {})
             }
 
-            if (commands.aliases.has(commandName)) {
-                const command = commands.commands.get(commands.aliases.get(commandName))
+            if (commands.names.has(commandName)) {
+                const command = commands.commands.get(commands.names.get(commandName))
 
-                const embed = functions.embed()
-                if (command.meta.permissions.includes('BOT_OWNER')) {
-                    if (!config.owners.includes(m.author.id)) {
-                        embed.setDescription('You are not the bot owner')
-                        m.channel.send({embed})
-                            .then(m2 => m2.delete(20 * 1000))
-                        return
-                    }
-                } else if (!m.member.hasPermission(command.meta.permissions)) {
-                    embed.setDescription(`You need ${command.meta.permissions.map(perm => `\`${perm}\``).join(', ')}` +
+                if (command.meta.permissions.includes('BOT_OWNER') &&
+                    !config.owners.includes(m.author.id)
+                ) return
+
+                else if (!m.member.hasPermission(command.meta.permissions)) {
+                    m.respond(`You need ${command.meta.permissions.map(perm => `\`${perm}\``).join(', ')}` +
                         'to run this command')
-                    m.channel.send({embed})
-                        .then(m2 => m2.delete(20 * 1000))
+                        .then(m2 => m2.delete(20 * 1000).catch(() => {}))
+                        .catch(() => {})
+
                     return
                 }
 
@@ -46,7 +43,7 @@ exports.run = () => {
                 }
             }
         } else if (m.content.startsWith(`<@${bot.user.id}>`) || m.content.startsWith(`<@!${bot.user.id}>`))
-            functions.respond(m, `The prefix is \`${prefix}\`. Use \`${prefix}prefix\` to change it`)
+            m.respond(`The prefix is \`${prefix}\`. Use \`${prefix}prefix\` to change it`)
     })
 }
 

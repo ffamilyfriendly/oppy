@@ -1,19 +1,27 @@
 const { bot, modules, db, functions, config } = require('../../bot')
 
 exports.run = async (m, a) => {
+    // Load the inspector
     const inspect = require('util').inspect
 
-    if (a.length < 1) return
-    try {
-        m.channel.send('```js\nRunning...\n```').then(m2 => {
-            eval(`(async () => { ${a.join(' ')} })()`).then(out => {
-                const fixedOut = inspect(out).replace(/`/g, '\`').slice(0, 1980)
-                m2.edit(`\`\`\`js\n${fixedOut}\n\`\`\``)
+    // If there are arguments provided
+    if (a.length > 0) {
+        try {
+            // Send a message to start the process
+            m.channel.send('```js\nRunning...\n```').then(m2 => {
+                // Run the code once the message is sent
+                eval(`(async () => { ${a.join(' ')} })()`).then(out => {
+                    // When the code finishes running, inspect the output
+                    const fixedOut = inspect(out).replace(/`/g, '\`').slice(0, 1980)
+                    // Edit the message to have the output
+                    m2.edit(`\`\`\`js\n${fixedOut}\n\`\`\``)
+                })
             })
-        })
         
-    } catch (e) {
-        m.channel.send(`\`ERROR\`\n\`\`\`js\n${e}\n\`\`\``)
+        // Output any errors
+        } catch (e) {
+            m.channel.send(`\`ERROR\`\n\`\`\`js\n${e}\n\`\`\``)
+        }
     }
 }
 

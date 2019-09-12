@@ -1,6 +1,7 @@
 const { help } = require('../../modules/core/commandLoader')
 
 exports.run = (m, a) => {
+    // Generate help in markdown, too stupid to explain
     const categories = Array.from(help.keys())
     const output = []
 

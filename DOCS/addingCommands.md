@@ -7,12 +7,10 @@ This is an example `ping.js` command:
 ```js
 const { bot, functions } = require('../../bot') // Require the client
 
-exports.run = (m, a) => { // m is the message object, a is an array of arguments.
-    const embed = functions.embed() // Easy way to create an embed with the default color
-        .setAuthor('Ping', bot.user.displayAvatarURL)
-        .setDescription(`:ping_pong: ${Math.floor(bot.ping)} ms`)
-
-    m.channel.send({embed}) // Send the embed
+exports.run = (m, a) => { // m is the message object, a is an array of arguments
+    // The respond method comes from library/mods
+    // The first parameter is the description, the second one (option) is the title
+    m.respond(`:ping_pong: ${Math.floor(bot.ping)} ms`, 'Ping')
 }
 
 exports.meta = {

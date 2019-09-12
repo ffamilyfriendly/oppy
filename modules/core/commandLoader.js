@@ -1,7 +1,7 @@
 const getFileList = require('../../library/getFileList')
 
 const commands = {
-    aliases: new Map(),
+    names: new Map(),
     commands: new Map()
 } 
 const help = new Map()
@@ -11,7 +11,7 @@ exports.commands = commands
 
 exports.run = () => {
     // Clear maps in case of a reload
-    commands.aliases.clear()
+    commands.names.clear()
     commands.commands.clear()
     help.clear()
 
@@ -22,32 +22,34 @@ exports.run = () => {
         if (require.resolve(commandDir))
             delete require.cache[require.resolve(commandDir)]
 
-        // Require command
+        // Load command
         const command = require(commandDir)
 
-        // Load aliases
-        command.meta.names.forEach(name => commands.aliases.set(name, command.meta.names[0]))
+        // Push names
+        command.meta.names.forEach(name => commands.names.set(name, command.meta.names[0]))
 
-        // Load command
+        // Push command
         commands.commands.set(command.meta.names[0], command)
 
-        // Ignore if there's no help category
-        if (!command.meta.help.category) return
+        // Load help if a category is provided
+        if (command.meta.help.category) {
+            // Categories can't be named `all`
+            if (command.meta.help.category.toLowerCase() == 'all')
+                throw new Error('Command category can\'t be \'all\'')
 
-        // Categories can't be named `all`
-        if (command.meta.help.category.toLowerCase() == 'all')
-            throw console.error('You can\'t have a command category named `all`')
+            // Create help category if it doesn't exist
+            if (!help.has(command.meta.help.category)) help.set(command.meta.help.category, [])
 
-        // Create help category if it doesn't exist
-        if (!help.has(command.meta.help.category)) help.set(command.meta.help.category, [])
+            // Push help
+            help.get(command.meta.help.category).push({
+                names: command.meta.names,
+                description: command.meta.help.description,
+                usage: command.meta.help.usage,
+                permissions: command.meta.permissions
+            })
+        }
 
-        // Load help
-        help.get(command.meta.help.category).push({
-            names: command.meta.names,
-            description: command.meta.help.description,
-            usage: command.meta.help.usage,
-            permissions: command.meta.permissions
-        })
+        
     })
 }
 

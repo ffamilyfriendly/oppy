@@ -10,12 +10,9 @@ You can access them from `const { functions } = require('./bot')`
     - Returns a Promise that's resolved in a specified amount of miliseconds
     - Usage: `await sleep(500)`
 - `guildCount()` / `userCount()`
-    - Returns a promise with the total guild/user count from all shards
+    - Returns a Promise with the total guild/user count from all shards
 - `getPrefix(id)`
     - Gets the prefix in a guild
-- `ensureUser(id)` / `ensureGuild(id)`
-    - Makes sure the database entry for this user has all the required properties specified in `config.js`
-    - More info on this in [Database](database.md)
 
 ## Example usage
 ```js

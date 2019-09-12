@@ -1,14 +1,13 @@
-const { functions, modules } = require('../../bot')
+const { modules } = require('../../bot')
 
 exports.run = async (m, a) => {
-    if (!a[0] || a[0].toLowerCase() != 'silent') {
-        const embed = functions.embed()
-            .setDescription('Reloading commands')
-        
-        await m.channel.send({embed})
+    // If a 'silent' argument is not provided, output the action
+    if (!a[0] || a[0].toLowerCase() != 'silent') {        
+        await m.respond('Reloading commands')
         console.log('Reloading commands')
     }
 
+    // Get the command loader module and run it
     modules.get('commandLoader').run()
 }
 
@@ -17,7 +16,7 @@ exports.meta = {
     permissions: ['BOT_OWNER'],
     help: {
         description: 'Reload the commands without restarting the bot',
-        usage: '',
+        usage: '[silent]',
         category: 'dev'
     }
 }

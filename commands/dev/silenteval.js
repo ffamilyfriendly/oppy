@@ -1,11 +1,15 @@
 const { bot, modules, db, functions, config } = require('../../bot')
 
 exports.run = (m, a) => {
-    if (a.length < 1) return
-    try {
-        eval(a.join(' '))
-    } catch (e) {
-        console.error(e)
+    // If there are arguments provided
+    if (a.length > 0) {
+        try {
+            // Run the code
+            eval(a.join(' '))
+        } catch (e) {
+            // Log the error
+            console.error(e)
+        }
     }
 }
 
