@@ -21,7 +21,7 @@ module.exports = (Discord, db) => {
 
         if (title) embed.setAuthor(title, bot.user.displayAvatarURL)
 
-        this.channel.send({embed})
+        return this.channel.send({embed})
     }
 
     // Database mods

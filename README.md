@@ -18,6 +18,17 @@ Included features:
 - Lots of documentation
 - ...
 
+## Credit
+If you want to use this project, please include the following in your README:
+
+[![DISCORDBOTBOILERPLATE](https://img.shields.io/badge/Made%20using-discord--bot--boilerplate-blue?style=flat-square)](https://gitlab.com/BarkingDog/discord-bot-boilerplate)
+
+```md
+[![DISCORDBOTBOILERPLATE](https://img.shields.io/badge/Made%20using-discord--bot--boilerplate-blue?style=flat-square)](https://gitlab.com/BarkingDog/discord-bot-boilerplate)
+```
+
+You don't have to do this, but it'd be really appreciated
+
 ## Where do I start?
 Read [Usage](DOCS/usage.md) for an **install and usage guide**
 

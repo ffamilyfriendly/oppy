@@ -10,7 +10,7 @@ This guide explains how to download, configure and use the bot step by step
 - Install `nodejs`
     - [Download Node.js](https://nodejs.org/en/download/)
     - If you're using linux, use your package manager instead. The exact command depends on your distribution
-        - Look up nodesource on google for more info
+        - Tip: search for `nodesource`
 - Open a terminal window
     - This can be cmd, powershell, bash or whatever else you like
 - Clone the repository
@@ -26,13 +26,13 @@ This guide explains how to download, configure and use the bot step by step
     - If you get warnings about missing optional dependencies, ignore them
     - This may take some time to install
     - If you get errors, read them and resolve them
-        - You may need to install build tools:
+        - You'll probably need to install build tools:
             - Windows: `npm install --global windows-build-tools`
+                - You have to open the terminal as administrator
                 - This may take a while to install
-                - Due to some bugs, this doesn't work with yarn, so use npm
-                - You may need to run this as admin
+                - Due to some bugs, this doesn't work with `yarn`, so use `npm`
             - Linux: `sudo apt-get install build-essential` (the exact command depends on your distribution)
-- Edit `config_template.js` using a text editor (like notepad or nano or something)
+- Edit `config_template.js` using a text editor (like notepad, vscode, nano or something else)
     - Set the discord token. You can get the token from the 
         [Discord Developer Portal](https://discordapp.com/developers/applications)
         - [How to create a discord bot account](https://anidiots.guide/getting-started/getting-started-long-version)
@@ -47,18 +47,21 @@ This guide explains how to download, configure and use the bot step by step
         - Enable `Developer Mode` in your discord settings under `Appearance`
         - Right click your profile picture in a chat
         - Click `Copy ID`
+        - Bot owners have access to the dev commands, which can be very dangerous. People with access to commands such as `eval` basically have full control over your computer, can access and delete all your files etc.
     - You should keep `shards` on `auto`, unless you know what you're doing
         - You'll need sharding once your bot reaches 2500 guilds
+        - You need 1 shard per about 1000 guilds
     - Set the bot name
     - Set the default embed color. Example: `#ffffff`
     - Set the activity
     - Choose if you want to log command use or not
+        - It's useful for debugging, but creates a mess in the console
     - Check out [Database](database.md) for more info on `dbDefaults`
         - Don't touch it for now
 - Rename `config_template.js` to `config.js`
     - Windows: `rename config_template.js config.js`
         - You can just use windows explorer instead
-    - Linux, android or MacOS: `mv config_template.js config.js`
+    - Linux: `mv config_template.js config.js`
 - Start the bot
     - `node bot` or `yarn start`
     - If you get an error, read what it says on the first or second line. Don't give up just yet!
@@ -68,7 +71,7 @@ This guide explains how to download, configure and use the bot step by step
         - `yarn global add pm2`
         - `pm2 start bot.js`
         - `pm2 logs bot`
-- Check if the bot is working by using the `d.ping` command (the prefix depends on what you set in the config) in a server
+- Check if the bot is working by using the `!ping` command (the prefix depends on what you set in the config) in a server
     - If the bot responds, it's working
 
 # Done!

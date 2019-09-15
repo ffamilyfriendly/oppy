@@ -5,7 +5,7 @@ more readable.
 You can access them from `const { functions } = require('./bot')`
 
 - `embed([color])`
-    - Returns a RichEmbed with the default color so you wouldn't have to require discord and the config
+    - Returns a RichEmbed with the default color so you wouldn't have to require `discord.js` or `config`
 - `sleep(ms)`
     - Returns a Promise that's resolved in a specified amount of miliseconds
     - Usage: `await sleep(500)`
