@@ -22,11 +22,9 @@ exports.run = () => {
             if (commands.names.has(commandName)) {
                 const command = commands.commands.get(commands.names.get(commandName))
 
-                if (command.meta.permissions.includes('BOT_OWNER') &&
-                    !config.owners.includes(m.author.id)
-                ) return
-
-                else if (!m.member.hasPermission(command.meta.permissions)) {
+                if (command.meta.permissions.includes('BOT_OWNER')) {
+                    if (!config.owners.includes(m.author.id)) return
+                } else if (!m.member.hasPermission(command.meta.permissions)) {
                     m.respond(`You need ${command.meta.permissions.map(perm => `\`${perm}\``).join(', ')}` +
                         'to run this command')
                         .then(m2 => m2.delete(20 * 1000).catch(() => {}))
