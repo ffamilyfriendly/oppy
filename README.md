@@ -1,8 +1,7 @@
 # Discord bot boilerplate
-
-[![MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://gitlab.com/BarkingDog/discord-bot-boilerplate/blob/master/LICENSE.md)
-[![NODE](https://img.shields.io/badge/Language-node.js-brightgreen.svg?style=flat-square)](https://nodejs.org/en/)
-[![SUPPORTSERVER](https://img.shields.io/badge/Support%20server-Join-yellow.svg?style=flat-square)](https://discord.gg/N8Fqcuk)
+[![MIT](https://flat.badgen.net/badge/License/MIT/blue)](https://gitlab.com/BarkingDog/antiowo/blob/master/LICENSE.md)
+[![NODE](https://flat.badgen.net/badge/Language/Node.js/green?icon=node)](https://nodejs.org/en/)
+[![SUPPORTSERVER](https://flat.badgen.net/badge/Support%20server/Join/purple)](https://discord.gg/N8Fqcuk)
 
 A boilerplate for making discord bots easily using `discord.js` and `enmap`
 
@@ -18,16 +17,14 @@ Included features:
 - Lots of documentation
 - ...
 
-## Credit
-If you want to use this project, please include the following in your README:
+## License
+This project is licensed under [MIT](./LICENSE.md), so you have to keep the license in the code. Also, please consider including the following in your README:
 
-[![DISCORDBOTBOILERPLATE](https://img.shields.io/badge/Made%20using-discord--bot--boilerplate-blue?style=flat-square)](https://gitlab.com/BarkingDog/discord-bot-boilerplate)
+[![DISCORDBOTBOILERPLATE](https://flat.badgen.net/badge/Made%20using/discord-bot-boilerplate/blue)](https://gitlab.com/BarkingDog/discord-bot-boilerplate)
 
 ```md
-[![DISCORDBOTBOILERPLATE](https://img.shields.io/badge/Made%20using-discord--bot--boilerplate-blue?style=flat-square)](https://gitlab.com/BarkingDog/discord-bot-boilerplate)
+[![DISCORDBOTBOILERPLATE](https://flat.badgen.net/badge/Made%20using/discord-bot-boilerplate/blue)](https://gitlab.com/BarkingDog/discord-bot-boilerplate)
 ```
-
-You don't have to do this, but it'd be really appreciated
 
 ## Where do I start?
 Read [Usage](DOCS/usage.md) for an **install and usage guide**
