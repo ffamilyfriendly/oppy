@@ -3,7 +3,7 @@ const getFileList = require('../../library/getFileList')
 const commands = {
     names: new Map(),
     commands: new Map()
-} 
+}
 const help = new Map()
 
 exports.help = help

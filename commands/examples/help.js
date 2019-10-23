@@ -3,11 +3,12 @@ const { help } = modules.get('commandLoader')
 
 exports.run = (m, a) => {
     // Get the prefix
-    const prefix = functions.getPrefix(m.guild.id)
+    const prefix = functions.getPrefix(m.guild ? m.guild.id : null)
 
     // Create an embed and set the title
     const embed = functions.embed()
         .setAuthor('Help', bot.user.displayAvatarURL)
+        .setFooter('[optional argument] | bold: DM command')
 
     const sendList = () => {
         // Generate list of categories
@@ -27,8 +28,9 @@ exports.run = (m, a) => {
     if (Array.from(help.keys()).includes(a[0].toLowerCase())) {
         // Generate the help for this category
         const list = help.get(a[0].toLowerCase())
-            .map(item => `\`${prefix}${item.names[0]}\` ${item.description}${item.usage != '' ? ` \`${prefix}` +
-                `${item.names[0]} ${item.usage}\`` : ''}`)
+            .map(item => `${item.permissions.includes('DM') ? '**' : ''}\`${prefix}${item.names[0]}\` ` +
+                `${item.description}${item.usage != '' ? ` \`${prefix}${item.names[0]} ${item.usage}\`` : ''}` +
+                (item.permissions.includes('DM') ? '**' : ''))
         
         // Add the list to the embed
         embed.addField(a[0][0].toUpperCase() + a[0].slice(1).toLowerCase(), list.join('\n'))
@@ -41,8 +43,9 @@ exports.run = (m, a) => {
         // Generate help for all categories
         Array.from(help.keys()).forEach(key => {
             const list = help.get(key)
-                .map(item => `\`${prefix}${item.names[0]}\` ${item.description}${item.usage != '' ? ` \`${prefix}` +
-                    `${item.names[0]} ${item.usage}\`` : ''}`)
+                .map(item => `${item.permissions.includes('DM') ? '**' : ''}\`${prefix}${item.names[0]}\` ` +
+                    `${item.description}${item.usage != '' ? ` \`${prefix}${item.names[0]} ${item.usage}\`` : ''}` +
+                    (item.permissions.includes('DM') ? '**' : ''))
             
             // Add them to the embed
             embed.addField(key[0].toUpperCase() + key.slice(1).toLowerCase(), list.join('\n'))
@@ -58,9 +61,9 @@ exports.run = (m, a) => {
 
 exports.meta = {
     names: ['help'],
-    permissions: [],
+    permissions: ['DM'],
     help: {
-        description: 'See the list of all commands',
+        description: 'See info about commands',
         usage: '',
         category: 'examples'
     }

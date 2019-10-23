@@ -6,17 +6,19 @@ module.exports = {
     sleep: ms => new Promise(res => setTimeout(res, ms)),
     guildCount: async () => {
         if (bot.shard) {
-            const values = await bot.shard.fetchClientValues('guilds.size')
-            return values.reduce((p, v) => p + v, 0)
+            const count = await bot.shard.fetchClientValues('guilds.size')
+            return count.reduce((p, v) => p + v)
         } else return bot.guilds.size
     },
     userCount: async () => {
         if (bot.shard) {
-            const values = await bot.shard.fetchClientValues('users.size')
-            return values.reduce((p, v) => p + v, 0)
+            const count = await bot.shard.fetchClientValues('users.size')
+            return count.reduce((p, v) => p + v)
         } else return bot.users.size
     },
     getPrefix: id => {
+        if (!id) return config.defaultPrefix
+        
         db.ensure.guild(id)
         return db.guild.get(id, 'prefix') || config.defaultPrefix
     }

@@ -7,7 +7,7 @@ exports.run = (m, a) => {
 
 exports.meta = {
     names: ['ping', 'pong'],
-    permissions: [],
+    permissions: ['DM'],
     help: {
         description: 'See the bot\'s ping',
         usage: '',

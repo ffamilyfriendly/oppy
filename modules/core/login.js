@@ -1,14 +1,14 @@
-const { bot, config, db } = require('../../bot')
+const { bot, config, db, functions } = require('../../bot')
 
 exports.run = () => {
     console.log('Logging in\n')
     bot.login(config.tokens.discord)
 
-    bot.on('ready', () => {
-
+    bot.on('ready', async () => {
         const lines = [
             `${config.name} is online`,
-            `${bot.guilds.size} guilds, ${bot.users.size} users`,
+            `${await functions.guildCount()} guilds, ${await functions.userCount()} users` +
+                (bot.shard ? `, ${bot.shard.count} shard${bot.shard.count > 1 ? 's' : ''}` : ''),
             `Owner${config.owners.length > 1 ? 's:' : ' -'} ` +
                 `${config.owners.map(id => bot.users.get(id).tag).join(', ')}`,
             `Prefix: ${config.defaultPrefix}`,
@@ -24,14 +24,14 @@ exports.run = () => {
             '#'.repeat(lineLength + 4)
         ].join('\n'))
 
-        const activity = () => config.activity.text
-            .replace(/BOTservers/g, bot.guilds.size)
+        const activity = async () => config.activity.text
+            .replace(/BOTservers/g, await functions.guildCount())
+            .replace(/BOTusers/g, await functions.userCount())
             .replace(/BOTprefix/g, config.defaultPrefix)
-            .replace(/BOTusers/g, bot.users.size)
 
-        bot.user.setActivity(activity(), config.activity)
-        setInterval(() => {
-            bot.user.setActivity(activity(), config.activity)
+        bot.user.setActivity(await activity(), config.activity)
+        setInterval(async () => {
+            bot.user.setActivity(await activity(), config.activity)
         }, 60 * 1000)
     })
 

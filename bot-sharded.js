@@ -8,7 +8,7 @@ const manager = new discord.ShardingManager('./bot.js', {
 })
 
 // Spawn the shards
-console.log(`Spawning '${config.shards}' shards`)
+console.log(`Spawning ${config.shards == 'auto' ? 'the recommended amount of': config.shards} shards`)
 manager.spawn()
 
 // Log when a shard is spawned

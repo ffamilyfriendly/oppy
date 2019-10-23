@@ -1,6 +1,6 @@
 {
   "name": "discord-bot-boilerplate",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "private": false,
   "description": "A boilerplate for making discord bots easily using discord.js and enmap",
   "repository": "https://gitlab.com/Wait_What_/discord-bot-boilerplate.git",

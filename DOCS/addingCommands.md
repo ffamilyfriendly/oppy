@@ -16,7 +16,7 @@ exports.run = (m, a) => { // m is the message object, a is an array of arguments
 exports.meta = {
     names: ['ping', 'pong'], // Names of the command. The first one is considered to be the main name
     permissions: [], // An array of permissions needed to run this command
-        // Can be BAN_MEMBERS, MANAGE_MESSAGES etc. or BOT_OWNER
+        // Can be BAN_MEMBERS, MANAGE_MESSAGES etc.; BOT_OWNER or DM
     help: {
         description: 'See the bot\'s ping', // The description of the command used in help
         usage: '', // Usage of the command. Use [] for optional arugments: !ping [@member]

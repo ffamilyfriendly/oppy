@@ -21,9 +21,20 @@ exports.run = (m, a) => {
         if (cmd.usage)
             out.push(`- Usage: \`${cmd.names[0]} ${cmd.usage}\``)
             
-        if (cmd.permissions.length > 0)
-            out.push(`- You need ${cmd.permissions.map(name => `\`${name.replace(/_/g, ' ')}\``).join(', ')} ` +
-                'to run this command')
+        if (cmd.permissions.filter(name => !['DM', 'BOT_OWNER'].includes(name)).length > 0) {
+            const perms = cmd.permissions
+                .filter(name => !['DM', 'BOT_OWNER'].includes(name))
+                .map(name => `\`${name.replace(/_/g, ' ')}\``)
+                .join(', ')
+        
+            out.push(`- You need ${perms} to run this command`)
+        }
+
+        if (cmd.permissions.includes('BOT_OWNER'))
+            out.push('- Bot owner only')
+
+        if (cmd.permissions.includes('DM'))
+            out.push('- Allowed in DMs')
 
         return out.join('\n')
     }
@@ -34,12 +45,14 @@ exports.run = (m, a) => {
     })
 
     console.log(output.join('\n'))
+
+    m.respond('Help generated. Check the console')
 }
 exports.meta = {
-    names: ['genhelpmd'],
+    names: ['generatehelp'],
     permissions: ['BOT_OWNER'],
     help: {
-        description: 'Generates help documentation in markdown',
+        description: 'Generates command documentation in markdown',
         usage: '',
         category: 'dev'
     }
