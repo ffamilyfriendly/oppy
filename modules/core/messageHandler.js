@@ -50,7 +50,8 @@ exports.run = () => {
                 }
 
                 // If the channel is a text channel and the member doesn't have the required permissions
-                else if (m.channel.type == 'text' && !m.member.hasPermission(command.meta.permissions)) {
+                else if (m.channel.type == 'text' &&
+                    !m.member.hasPermission(command.meta.permissions.filter(p => p != 'DM'))) {
                     // Inform the member
                     m.respond(`You need ${command.meta.permissions.map(perm => `\`${perm}\``).join(', ')}` +
                         'to run this command')
