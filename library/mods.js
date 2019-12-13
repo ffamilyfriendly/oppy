@@ -1,6 +1,7 @@
-const { bot, config } = require('../bot')
+const { bot, config} = require('../bot')
 
-module.exports = (Discord, db) => {
+
+module.exports = (Discord, db, DBL) => {
     // Discord mods
     Discord.Embed = class extends Discord.RichEmbed {
         constructor(color, data) {
@@ -22,6 +23,24 @@ module.exports = (Discord, db) => {
         if (title) embed.setAuthor(title, bot.user.displayAvatarURL)
 
         return this.channel.send({embed})
+    }
+
+    Discord.Message.prototype.prompt = async function(question,rt) {
+        let embed = new Discord.RichEmbed()
+        embed.addField(question,`question terminated ${rt} seconds after this message is sent...`)
+        let questionMessage = await this.channel.send({embed})
+        let r = await this.channel.awaitMessages(response => response.author.id === this.author.id, { max: 1, time: rt * 1000, errors: ['time'] })
+                .catch(e => {
+                    embed.setFooter("error: something went wrong")
+                    embed.setColor("RED")
+                    questionMessage.edit({embed})
+                    return 
+                })
+        return r
+    }
+
+    Discord.User.prototype.hasVoted = function() {
+        return DBL.hasVoted(this.id)
     }
 
     // Database mods

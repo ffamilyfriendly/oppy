@@ -18,6 +18,10 @@ const db = {
 // Create a Discord client
 const bot = new Discord.Client()
 
+//discord bot list
+const _DBL = require("dblapi.js");
+const DBL = new _DBL(config.tokens.dbl,bot)
+
 // Create a collection for modules
 const modules = new Discord.Collection()
 
@@ -25,7 +29,7 @@ const modules = new Discord.Collection()
 module.exports = { bot, db, modules, config }
 
 // Mod discord.js and expand db
-require('./library/mods')(Discord, db)
+require('./library/mods')(Discord, db, DBL)
 
 // Load functions
 module.exports.functions = require('./library/functions')

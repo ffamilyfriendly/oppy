@@ -11,8 +11,10 @@
     "start": "node bot.js"
   },
   "dependencies": {
-    "better-sqlite3": "^5.4.0",
+    "better-sqlite3": "^5.4.3",
+    "dblapi.js": "^2.3.0",
     "discord.js": "^11.5.1",
-    "enmap": "^5.0.0"
+    "enmap": "^5.2.3",
+    "mongoose": "^5.8.0"
   }
 }
