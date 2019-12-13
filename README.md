@@ -1,3 +1,7 @@
+# Oppy
+![oppy](https://top.gg/api/widget/487576643272048673.svg)
+[invite](https://top.gg/bot/487576643272048673)
+
 # Discord bot boilerplate
 [![MIT](https://flat.badgen.net/badge/License/MIT/blue)](https://gitlab.com/Waut_What_/antiowo/blob/master/LICENSE.md)
 [![NODE](https://flat.badgen.net/badge/Language/Node.js/green?icon=node)](https://nodejs.org/en/)
