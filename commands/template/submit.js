@@ -56,7 +56,7 @@ m.prompt("what do you want to name this preset?",20)
             Preset.find({userID:m.author.id},async (err,lines) => {
                 if(err) return m.respond("could not fetch templates","error")
                 const voted = await m.author.hasVoted()
-                if(lines.length >= 3 && !voted) return m.respond(`You cannot have more then **3** templates unless you are a __[premium user](https://familyfriendly.xyz/s/premium.html)__`,"sorry")
+                if(lines.length >= 3 && !voted) return m.respond(`You cannot have more then **3** templates unless you are a __[premium user](https://familyfriendly.xyz/s/bot/premium.html)__`,"sorry")
                 else {
                     const preset = new Preset({
                         username: meta.username,
