@@ -21,25 +21,5 @@ module.exports = {
         
         db.ensure.guild(id)
         return db.guild.get(id, 'prefix') || config.defaultPrefix
-    },
-    convert: structure => {
-        return {
-            channels: structure.channels.map(c => {
-                return {
-                    name: c.cat_name,
-                    perms: c.cat_perms.filter(p => p.type === "role"),
-                    position:null,
-                    children: c.channels.map(child => {
-                        return {
-                            name: child.name,
-                            type: child.type,
-                            position:null,
-                            perms: child.perms.filter(p => p.type === "role")
-                        }
-                    })
-                }
-            }),
-            roles: structure.roles
-        }
     }
 }

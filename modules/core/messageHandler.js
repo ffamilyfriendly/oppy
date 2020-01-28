@@ -62,7 +62,7 @@ exports.run = () => {
                 }
 
                 //cooldown
-                if(command.meta.cooldown && command.meta.cooldown.enabled) {
+                if(command.meta.cooldown && command.meta.cooldown.enabled && !config.owners.includes(m.author.id)) {
                     if(!command._cdm) command._cdm = new Set() //if there is no cooldown set we create one
                     if(command._cdm.has(m.author.id)) return m.respond(`Sorry! there is a ${command.meta.cooldown.time/1000} second cooldown for this command.\n[premium users](https://familyfriendly.xyz/s/bot/premium.html) get 50% shorter cooldowns`,"cooldown")
                     command._cdm.add(m.author.id) //add user to map

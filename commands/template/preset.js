@@ -1,23 +1,18 @@
-const { client } = require('../../bot')
-const Preset = require('../../library/models/presets')
-const lib = require("../../library/functions")
+const req = require("request")
 
 exports.run = async (m, a) => {
     // Create an embed
     if(!a[0]) return m.respond("no id passed");
-
-    Preset.findOne({
-        _id:a[0]
-    }, async (err,obj) => {
-        if(!obj) return m.respond("preset was not found on database")
+    //fetch template from
+    req(`https://familyfriendly.xyz/api/template/${a[0]}`,{method:"GET"},(e,data) => {
+        let t = JSON.parse(data.body)
+        if(!t || !t[0]) return m.respond("preset was not found on database")
+        t = t[0]
         m.prompt(`are you sure you want to do this? **all old channels & roles will be deleted** (respond with "yes" to confirm)`,20)
         .then( async (a) => {
             if(a.first().content !== "yes") return m.channel.send(`Preset stopped`)
-            let template = obj.preset
-            if(template.creds) {
-                m.respond("template is depracated. While it still works for now there is no guarantee it will in the future.")
-                template = lib.convert(template)
-            } 
+            let template = JSON.parse(t.data)
+            if(!template) return m.respond("something went wrong")
             let roles = await m.guild.roles.filter(role => role.editable && role.id !== m.guild.defaultRole.id)
             roles ? roles.deleteAll() : null
             .catch(err => m.channel.send(`could not delete old roles. (${err})`))
@@ -82,8 +77,6 @@ exports.run = async (m, a) => {
                 }
                 
             })
-        
-
         })
     })
 }
